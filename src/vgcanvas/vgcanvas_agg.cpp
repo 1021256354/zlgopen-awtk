@@ -96,7 +96,7 @@ static ret_t vgcanvas_agg_line_to(vgcanvas_t* vg, float_t x, float_t y) {
 static ret_t vgcanvas_agg_quad_to(vgcanvas_t* vg, float_t cpx, float_t cpy, float_t x, float_t y) {
   vgcanvas_agg_t* agg = (vgcanvas_agg_t*)vg;
   return_value_if_fail(agg->canvas != NULL, RET_BAD_PARAMS);
-  /*TODO*/
+  agg->canvas->curve_to(cpx, cpy, x, y)
 
   return RET_OK;
 }
@@ -105,7 +105,7 @@ static ret_t vgcanvas_agg_bezier_to(vgcanvas_t* vg, float_t cp1x, float_t cp1y, 
                                     float_t cp2y, float_t x, float_t y) {
   vgcanvas_agg_t* agg = (vgcanvas_agg_t*)vg;
   return_value_if_fail(agg->canvas != NULL, RET_BAD_PARAMS);
-  /*TODO*/
+  agg->canvas->curve_to(cp1x, cp1y, cp2x, cp2y, x, y)
 
   return RET_OK;
 }
@@ -122,7 +122,7 @@ static ret_t vgcanvas_agg_arc(vgcanvas_t* vg, float_t x, float_t y, float_t r, f
                               float_t end, bool_t ccw) {
   vgcanvas_agg_t* agg = (vgcanvas_agg_t*)vg;
   return_value_if_fail(agg->canvas != NULL, RET_BAD_PARAMS);
-  /*TODO*/
+  agg->canvas->arc(x, y, r, start, end, ccw);
 
   return RET_OK;
 }
@@ -166,7 +166,7 @@ static ret_t vgcanvas_agg_transform(vgcanvas_t* vg, float_t a, float_t b, float_
                                     float_t e, float_t f) {
   vgcanvas_agg_t* agg = (vgcanvas_agg_t*)vg;
   return_value_if_fail(agg->canvas != NULL, RET_BAD_PARAMS);
-  /*TODO*/
+  agg->canvas->transform(a, b, c, d, e, f);
 
   return RET_OK;
 }
@@ -175,7 +175,7 @@ static ret_t vgcanvas_agg_set_transform(vgcanvas_t* vg, float_t a, float_t b, fl
                                         float_t e, float_t f) {
   vgcanvas_agg_t* agg = (vgcanvas_agg_t*)vg;
   return_value_if_fail(agg->canvas != NULL, RET_BAD_PARAMS);
-  /*TODO*/
+  agg->canvas->setTransform(a, b, c, d, e, f);
 
   return RET_OK;
 }

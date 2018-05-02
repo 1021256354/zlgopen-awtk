@@ -312,6 +312,15 @@ public:
         mtx *= agg::trans_affine_translation(x, y);
     }
 
+    inline void transform(float_t a, float_t b, float_t c, float_t d, float_t e, float_t f){
+        agg::trans_affine tmp_mtx(a, b, c, d, e, f);
+        mtx.multiply(tmp_mtx);
+    }
+
+    inline void setTransform(float_t a, float_t b, float_t c, float_t d, float_t e, float_t f){
+        mtx = agg::trans_affine(a, b, c, d, e, f);
+    }
+
     // Set scale
     inline void scale(float_t n){
         mtx *= agg::trans_affine_scaling(n);
@@ -363,6 +372,11 @@ public:
     void ellipse(float_t x, float_t y, float_t rx, float_t ry, int n = 100){
         agg::ellipse ell(x, y, rx, ry, n);
         concat_path<agg::ellipse>(ell);
+    }
+
+    void arc(float_t x, float_t y, float_t r, float_t start, float_t end, bool_t ccw){
+        agg::arc a(x, y, r, r, start, end, ccw);
+        concat_path<agg::arc>(a)
     }
 
     inline void rect(float_t x, float_t y, float_t x1, float_t y1, float_t border_radius=0){
